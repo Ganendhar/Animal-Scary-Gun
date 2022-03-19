@@ -1,0 +1,76 @@
+int pir1 = 0;
+int pir2 = 0;
+int pir3 = 0;
+int pir4 = 0;
+void setup()
+{
+  //pinmodes for 4 led's
+  pinMode(8, OUTPUT);
+  pinMode(9, OUTPUT);
+  pinMode(10, OUTPUT);
+  pinMode(11, OUTPUT);
+ 
+  pinMode(5,OUTPUT);//buzzer
+  
+  //pinmodes for 4 IR sensors
+  
+  pinMode(2,INPUT);//pir 1
+  pinMode(3,INPUT);//pir 2
+  pinMode(12,INPUT);//pir 3
+  pinMode(13,INPUT);//pir 4
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  pir1 = digitalRead(2);
+  pir2 = digitalRead(3);
+  pir3 = digitalRead(12);
+  pir4 = digitalRead(13);
+  
+  if(pir1==HIGH)
+  {
+    digitalWrite(8,HIGH);
+   
+    Serial.println("Motion detected at 1st pir");
+    digitalWrite(5,HIGH);
+     delay(5000);
+  }
+  else{
+    digitalWrite(8,LOW);
+  }
+  
+ if(pir2==HIGH)
+  {
+    digitalWrite(9,HIGH);
+    
+    Serial.println("Motion detected at 2nd pir");
+    digitalWrite(5,HIGH);
+    
+    delay(5000);
+  }
+   else{
+    digitalWrite(9,LOW);
+  }
+ if(pir3==HIGH)
+  {
+    digitalWrite(10,HIGH);
+ 
+    Serial.println("Motion detected at 3rd pir");
+    digitalWrite(5,HIGH);
+     delay(5000);
+  }
+   else{
+    digitalWrite(10,LOW);
+  }
+  if(pir4==HIGH)
+  {
+    digitalWrite(11,HIGH);
+    Serial.println("Motion detected at 4th pir");
+     digitalWrite(5,HIGH);
+    delay(5000);
+  }
+   else{
+    digitalWrite(11,LOW);
+  }
+}
